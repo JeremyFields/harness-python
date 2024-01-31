@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_JeremyFields_harness_python_1706730295564-pr-trigger-input-set
+  identifier: Build_JeremyFields_harness_python_1706730295564prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: test
+  pipeline:
+    identifier: Build_JeremyFields_harness_python_1706730295564
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
