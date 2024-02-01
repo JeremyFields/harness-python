@@ -10,7 +10,7 @@ RUN pip install -r /opt/app/src/test-requirements.txt
 
 COPY . /opt/app/src/
 WORKDIR /opt/app/src
-RUN python ./dronedemo/scripts/main.py install
+RUN python ./dronedemo/scripts/main.py
 
 EXPOSE 5000
 CMD dronedemo
