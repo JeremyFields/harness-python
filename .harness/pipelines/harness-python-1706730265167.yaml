@@ -25,6 +25,8 @@ pipeline:
                     shell: Sh
                     command: |-
                       echo "Running tests"
+                      ls
+                      pwd
                       if [ -f test-requirements.txt ]; then pip install -r test-requirements.txt; fi
                       pytest ./tests/test_tester.py --junit-xml=output-test.xml
                       reports:
