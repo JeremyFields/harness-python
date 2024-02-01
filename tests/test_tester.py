@@ -1,4 +1,5 @@
-from ../scripts import app
+sys.path.append('../dronedemo')
+from dronedemo.main import app
 
 def test_pytest():
   assert True
