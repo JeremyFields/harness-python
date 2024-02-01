@@ -24,10 +24,6 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      echo "Welcome to Harness CI"
-                      ls
-                      pwd
-                      python --version
                       python -m pip install --upgrade pip
                       if [ -f requirements.txt ]; then pip install --ignore-installed -r requirements.txt; fi
               - step:
