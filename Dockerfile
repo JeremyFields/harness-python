@@ -1,7 +1,6 @@
 FROM python:3.10.13-bullseye
 MAINTAINER Greg Taylor <gtaylor@gc-taylor.com>
 
-RUN pip install --upgrade
 # These are copied and installed first in order to take maximum advantage
 # of Docker layer caching (if enabled).
 COPY *requirements.txt /opt/app/src/
