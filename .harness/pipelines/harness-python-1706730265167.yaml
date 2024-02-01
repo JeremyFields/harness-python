@@ -19,11 +19,27 @@ pipeline:
             steps:
               - step:
                   type: Run
+                  identifier: Run_pytest
+                  name: Run pytest
+                  spec:
+                    shell: Sh
+                    command: |-
+                      echo "Running tests"
+                      if [ -f test-requirements.txt ]; then pip install -r test-requirements.txt; fi
+                      pytest ./test/test_tester.py --junit-xml=output-test.xml
+                      reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                        output-test.xml
+              - step:
+                  type: Run
                   identifier: build_python_app
                   name: Build Python App
                   spec:
                     shell: Sh
                     command: |-
+                      ls
                       python -m pip install --upgrade pip
                       if [ -f requirements.txt ]; then pip install --ignore-installed -r requirements.txt; fi
               - step:
