@@ -18,12 +18,6 @@ pipeline:
           execution:
             steps:
               - step:
-                  name: Run pytest
-                  identifier: Run_pytest
-                  template:
-                    templateRef: runpytest
-                    versionLabel: Version1
-              - step:
                   name: Build Python App
                   identifier: build_python_app
                   template:
@@ -48,3 +42,4 @@ pipeline:
         type: CI
         delegateSelectors:
           - docker-delegate
+        description: ""
