@@ -35,6 +35,10 @@ pipeline:
                   template:
                     templateRef: BuildAndPushDockerhub
                     versionLabel: Version1
+                    templateInputs:
+                      type: BuildAndPushDockerRegistry
+                      spec:
+                        repo: <+input>
           platform:
             os: Linux
             arch: Amd64
