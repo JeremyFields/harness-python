@@ -18,46 +18,29 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  identifier: Run_pytest
                   name: Run pytest
-                  spec:
-                    shell: Sh
-                    command: |-
-                      ls
-                      cd tests
-                      ls
-                      echo "Running tests"
-                      if [ -f test-requirements.txt ]; then pip install -r test-requirements.txt; fi
-                      python -m pytest test_tester.py --junit-xml=output-test.xml
-                      reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                        output-test.xml
+                  identifier: Run_pytest
+                  template:
+                    templateRef: runpytest
+                    versionLabel: Version1
               - step:
-                  type: Run
-                  identifier: build_python_app
                   name: Build Python App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      ls
-                      python -m pip install --upgrade pip
-                      if [ -f requirements.txt ]; then pip install --ignore-installed -r requirements.txt; fi
+                  identifier: build_python_app
+                  template:
+                    templateRef: BuildPythonApp
+                    versionLabel: Version1
               - step:
-                  type: BuildAndPushDockerRegistry
-                  identifier: Build_and_push_to_docker
                   name: Build and push to docker
-                  spec:
-                    connectorRef: jeremydocker
-                    repo: jboofaloo/harness-test
-                    tags:
-                      - v1
+                  identifier: Build_and_push_to_docker
+                  template:
+                    templateRef: BuildAndPushDockerhub
+                    versionLabel: Version1
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
         type: CI
+        delegateSelectors:
+          - docker-delegate
