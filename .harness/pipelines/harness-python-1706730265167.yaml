@@ -35,11 +35,11 @@ pipeline:
                         repo: <+input>
           platform:
             os: Linux
-            arch: Amd64
+            arch: Arm64
           runtime:
-            type: Cloud
+            type: Docker
             spec: {}
         type: CI
+        description: ""
         delegateSelectors:
           - docker-delegate
-        description: ""
