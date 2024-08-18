@@ -33,6 +33,7 @@ pipeline:
                       type: BuildAndPushDockerRegistry
                       spec:
                         repo: <+input>
+                      when: <+input>
           platform:
             os: Linux
             arch: Arm64
